@@ -35,7 +35,7 @@ cranix_conf = BashConfigParser(config_file='/etc/sysconfig/cranix')
 for key in fillup_template:
     if key in cranix_conf:
         fillup_template.set(key, fillup_template.get(key))
-services=cranix_conf.get('CRANIX_MONITOR_SERVICES').strip('"').strip("'").split()
+services=cranix_conf.get('CRANIX_MONITOR_SERVICES')
 for i in old_services:
     if i in services:
         services.remove(i)
