@@ -266,10 +266,10 @@ else:
             default_access[room['id']] = json.load(os.popen('/usr/sbin/crx_api.sh GET rooms/{0}/defaultAccess'.format(room['id'])))
             set_state(room)
 
-    if smb_reload:
-        if len(login_denied_rooms) == 0:
-            config.remove_option('global','hosts deny')
-        else:
-            config.set('global','hosts deny'," ".join(login_denied_rooms))
+
+    if len(login_denied_rooms) == 0:
+        config.remove_option('global','hosts deny')
+    else:
+        config.set('global','hosts deny'," ".join(login_denied_rooms))
 
     cups.save()
